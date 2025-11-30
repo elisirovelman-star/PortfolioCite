@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>QR Generator</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .box {
+        background: rgba(0, 255, 136, 0.08);
+        padding: 30px;
+        width: 350px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 0 25px #00ff88aa;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 17px;
+        outline: none;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 95%;
+        padding: 12px;
+        border: none;
+        background: #00ff88;
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    #downloadBtn {
+        display: none;
+        background: #0088ff;
+        margin-top: 15px;
+    }
+
+    #qrcode {
+        margin-top: 20px;
+        display: none;
+    }
+
+    canvas {
+        background: #000;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #00ff88;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>QR Generator</h2>
+
+    <input type="text" id="qrtext" placeholder="Mətn və ya link yaz...">
+
+    <button onclick="generateQR()">QR düzəlt</button>
+
+    <div id="qrcode">
+        <canvas id="qr-canvas"></canvas>
+    </div>
+
+    <button id="downloadBtn" onclick="downloadQR()">Yüklə</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<script>
+let qr;
+
+function generateQR() {
+    let text = document.getElementById("qrtext").value.trim();
+    if (text === "") return;
+
+    document.getElementById("qrcode").style.display = "block";
+
+    qr = new QRious({
+        element: document.getElementById("qr-canvas"),
+        value: text,
+        size: 220,
+        background: "#000",
+        foreground: "#00ff88"
+    });
+
+    document.getElementById("downloadBtn").style.display = "block";
+}
+
+function downloadQR() {
+    let link = document.createElement("a");
+    link.href = document.getElementById("qr-canvas").toDataURL("image/png");
+    link.download = "qr-code.png";
+    link.click();
+}
+</script>
+
+</body>
+</html>

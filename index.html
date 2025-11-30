@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Elman Alishirov — Official Portfolio</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Elman Alishirovun rəsmi portfolio saytı — Frontend Developer, premium animasiyalı veb layihələr.">
+    <meta name="keywords" content="Elman Alishirov, Alishirov, frontend developer, web developer, portfolio, UI/UX">
+    <meta name="author" content="Elman Alishirov">
+
+    <!-- Social Share -->
+    <meta property="og:title" content="Elman Alishirov — Developer">
+    <meta property="og:description" content="Rəsmi portfolio — Premium animasiyalı web saytlar.">
+    <meta property="og:image" content="https://alishirov.vercel.app/logo.png">
+    <meta property="og:url" content="https://alishirov.vercel.app/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background: #0d0d0d;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 170px 8% 140px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .hero-left {
+            max-width: 560px;
+        }
+
+        .hero-left h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .hero-left p {
+            font-size: 18px;
+            opacity: .8;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .hero-button {
+            background: #00ff88;
+            padding: 16px 34px;
+            margin-top: 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 0 25px #00ff8899;
+            width: 100%;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px #00ff88;
+        }
+
+        /* TECH ICONS */
+        .tech {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .tech-icons img {
+            margin-right: 15px;
+            width: 42px;
+        }
+
+
+        /* RIGHT SIDE ICON */
+        .hero-right {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0 0 40px #00ff88aa,
+                inset 0 0 40px #00ff8844;
+            animation: pulse 3s infinite;
+            margin-top: 40px;
+        }
+
+        .hero-right img {
+            width: 230px;
+            filter: drop-shadow(0 0 15px #00ff88);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 30px #00ff8899
+            }
+
+            50% {
+                box-shadow: 0 0 65px #00ff88dd
+            }
+
+            100% {
+                box-shadow: 0 0 30px #00ff8899
+            }
+        }
+
+        /* SECTION TITLE */
+        .title {
+            text-align: center;
+            margin-top: 120px;
+            font-size: 38px;
+            font-weight: 700;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            padding-bottom: 80px;
+        }
+
+        .project-box {
+            background: #111;
+            width: 330px;
+            border-radius: 16px;
+            padding: 25px;
+            transition: .35s;
+            cursor: pointer;
+            box-shadow: 0 0 5px #111;
+        }
+
+        .project-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px #00ff8844;
+        }
+
+        .project-box h3 {
+            margin-top: 10px
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            padding: 120px 0 150px;
+        }
+
+        .contact a {
+            display: block;
+            font-size: 22px;
+            margin-top: 12px;
+            color: #00ff88;
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #000;
+            opacity: .7;
+        }
+
+        /* Responsive */
+        @media(max-width:900px) {
+            .hero {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-right {
+                margin-top: 60px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
+
+        .hero-right img {
+            width: 115%;
+            height: 115%;
+            object-fit: cover;
+            /* yumruğun içini tam doldurur */
+            border-radius: 50%;
+            /* şəkili də yumru eləyir */
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            backdrop-filter: blur(12px);
+            z-index: 999;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* UL Menu */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 4px;
+            transition: 0.3s ease;
+        }
+
+        /* Premium underline hover */
+        .nav-links li a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 0;
+            bottom: -2px;
+            background: #00ff88;
+            transition: 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links li a:hover {
+            color: #00ff88;
+        }
+
+        .hero {
+            padding-top: 160px;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1350px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* CONTACT PREMIUM BOX */
+        .contact-box {
+            width: 60%;
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            background: #0f0f0f;
+            box-shadow: 0 0 25px #00ff8840, inset 0 0 25px #00ff8830;
+            transition: 0.4s ease;
+        }
+
+        .contact-box:hover {
+            box-shadow: 0 0 40px #00ff8870, inset 0 0 40px #00ff8840;
+            transform: translateY(-5px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 18px 0;
+            font-size: 22px;
+            gap: 12px;
+        }
+
+        .contact-item a {
+            color: #00ff88;
+            font-size: 22px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: white;
+            text-shadow: 0 0 10px #00ff88;
+        }
+
+        .icon {
+            font-size: 28px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #0d0d0d;
+        }
+
+
+        .tech-icons img,
+        .logo {
+            transition: 0.3s;
+        }
+
+        .tech-icons img:hover {
+            transform: translateY(-5px);
+            opacity: 0.6;
+        }
+
+        .logo:hover {
+            transform: scale(1.2);
+            opacity: 0.6;
+        }
+
+        .hero-left {
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.13);
+            /* çox az qaranlıq olsun */
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            /* premium qat */
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.10);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* RETRO CONTACT — HERO-LEFT STYLE (GLASSMORPHISM + RED TERMINAL) */
+
+        .retro-contact {
+            padding: 160px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .retro-box {
+            max-width: 600px;
+            padding: 35px 45px;
+            border-radius: 18px;
+
+            /* Hero-left kimi blur */
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            background: rgba(255, 0, 0, 0.08);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+
+            box-shadow:
+                0 0 25px rgba(255, 0, 0, 0.3),
+                inset 0 0 25px rgba(255, 0, 0, 0.2);
+
+            font-family: 'VT323', monospace;
+            color: #ff3c2f;
+            text-shadow: 0 0 8px #ff3c2f;
+
+            white-space: pre;
+            font-size: 20px;
+            line-height: 1.5;
+            animation: flicker 0.15s infinite alternate;
+        }
+
+        /* Terminal flicker */
+        @keyframes flicker {
+            from {
+                opacity: 0.96;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .retro-link {
+            color: #ff3c2f;
+            text-decoration: none;
+            text-shadow: 0 0 8px #ff3c2f;
+            transition: 0.2s;
+        }
+
+        .retro-link:hover {
+            color: #ff7a6f;
+            text-shadow: 0 0 12px #ff3c2f;
+        }
+
+        #slide-text {
+            position: fixed;
+            top: 50%;
+            left: -50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            font-weight: 800;
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ff88, 0 0 25px #00ff88aa;
+            white-space: nowrap;
+
+            z-index: -1;
+            /* <-- ƏSAS NOQTƏ !!! */
+
+            animation: slideAnim 9s linear infinite;
+        }
+
+        @keyframes slideAnim {
+            0% {
+                left: -50%;
+                opacity: 0;
+            }
+
+            15% {
+                left: 20%;
+                opacity: 1;
+            }
+
+            50% {
+                left: 50%;
+                opacity: 1;
+            }
+
+            80% {
+                left: 110%;
+                opacity: 1;
+            }
+
+            100% {
+                left: 110%;
+                opacity: 0;
+            }
+        }
+
+        nav {
+            overflow: hidden;
+            /* scroll-u 0 edir */
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1350px;
+            padding: 0 20px;
+            /* boşluğu buradan idarə et */
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media(max-width: 900px) {
+            .nav-links {
+                gap: 20px;
+                /* 40px çox idi */
+            }
+
+            nav {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-links li a {
+                font-size: 15px;
+            }
+
+            /* HERO MOBILE */
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 140px;
+                gap: 20px;
+            }
+
+            .hero-right {
+                order: 1;
+                width: 220px;
+                height: 220px;
+                margin-bottom: 10px;
+                box-shadow:
+                    0 0 25px #00ff88aa,
+                    inset 0 0 25px #00ff8844;
+            }
+
+            .hero-right img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .hero-left {
+                order: 2;
+                width: 90%;
+                text-align: center;
+                padding: 25px 20px;
+                margin-top: -5px;
+
+                backdrop-filter: blur(15px);
+                background: rgba(0, 0, 0, 0.35);
+                border-radius: 15px;
+                border: 1px solid rgba(0, 255, 136, 0.12);
+                box-shadow: 0 0 25px rgba(0, 255, 136, 0.15);
+            }
+
+            .hero-left h1 {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+
+            .hero-left p {
+                font-size: 15px;
+                line-height: 1.6;
+                opacity: 0.85;
+            }
+
+            .hero-button {
+                width: 100%;
+                margin-top: 20px;
+                font-size: 17px;
+            }
+
+            /* TECH MOBILE */
+            .tech {
+                margin-top: 20px;
+            }
+
+            .tech-icons img {
+                width: 38px;
+                margin: 0 5px;
+            }
+
+            /* PROJECTS TITLE SPACING */
+            .title {
+                margin-top: 80px !important;
+                font-size: 30px;
+            }
+
+            /* CONTACT MOBILE SPACING */
+            #contact {
+                margin-top: 50px;
+            }
+        }
+
+        html,
+        body {
+            overflow-x: hidden !important;
+            width: 100%;
+        }
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            /* 100vw yox!!! */
+            height: 100% !important;
+        }
+
+        /* iPad Pro, Surface Pro, Tablet Large */
+        @media(max-width:1200px) and (min-width:701px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 25px;
+                padding-top: 140px;
+            }
+
+            .hero-right {
+                order: 1;
+                width: 250px;
+                height: 250px;
+                margin: 0 auto 10px auto;
+            }
+
+            .hero-left {
+                order: 2;
+                width: 85%;
+            }
+
+            .hero-right img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="matrix"></canvas>
+    <div id="slide-text">Elman Əlişirov</div>
+    <!-- NAV -->
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">EƏ</div>
+
+            <ul class="nav-links">
+                <li class="home"><a href="#home">Ana Səhifə</a></li>
+                <li class="project"><a href="#projects">Layihələr</a></li>
+                <li class="conn"><a href="#contact">Əlaqə</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-left">
+            <h1>Elman Alishirov</h1>
+            <p>
+                Modern və premium veb saytlar hazırlayıram. UI/UX, frontend və animasiyalı
+                layihələrdə peşəkar yanaşma ilə xidmət göstərirəm.
+            </p>
+
+            <a href="https://wa.me/994993003029?text=Salam." class="primary-btn text-uppercase" target="_blank"> <button
+                    class="hero-button">
+                    Layihəyə başlayaq →
+                </button></a>
+
+            <div class="tech">
+                <p>İşlədiyim texnologiyalar:</p>
+                <div class="tech-icons">
+                    <a href="https://en.wikipedia.org/wiki/HTML" target="_blank"><img
+                            src="https://skillicons.dev/icons?i=html"></a>
+                    <a href="https://en.wikipedia.org/wiki/CSS" target="_blank"><img
+                            src="https://skillicons.dev/icons?i=css"></a>
+                    <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank"><img
+                            src="https://skillicons.dev/icons?i=js"></a>
+                    <a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)" target="_blank"><img
+                            src="https://skillicons.dev/icons?i=bootstrap"></a>
+                    <a href="https://en.wikipedia.org/wiki/JQuery" target="_blank"><img
+                            src="https://skillicons.dev/icons?i=jquery"></a>
+                    <a href="https://en.wikipedia.org/wiki/GitHub" target="_blank"><img
+                            src="https://skillicons.dev/icons?i=github"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <img src="./logoee.png">
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <h1 class="title" id="projectss">Son Layihələr</h1>
+
+    <div class="projects" id="projects">
+
+        <div class="project-box">
+            <a href="./calc.html"><img src="./calcc.png" width="100%"></a>
+            <h3>Calculator generator</h3>
+            <p>Neon effektli, premium dark UI personal portfolio.</p>
+        </div>
+
+        <div class="project-box">
+            <a href="./qrgenerator.html"><img src="./qr.png" width="100%"></a>
+            <h3>Qr Code generator</h3>
+            <p>Rahat istediyiniz saytin qr yarada bilersiniz</p>
+        </div>
+    </div>
+
+    <h1 class="title" id="projectsss">Contact</h1>
+
+    <section id="contact" class="retro-contact">
+
+        <div class="retro-box">
+
+            SYSTEM STATUS CHECK .......... OK
+            DRIVER MODULES ............... OK
+            SECURITY LAYERS .............. OK
+            CONNECTION NODE .............. READY
+            -----------------------------------------
+
+            USER CONTACT PARAMETERS
+            ------------------------
+
+            EMAIL: <a href="mailto:elisirovelman@gmail.com" class="retro-link">elisirovelman@gmail.com</a>
+
+            PHONE: <a href="https://wa.me/994993003029?text=Salam." class="retro-link">099-300-30-29</a>
+
+            INSTAGRAM: <a href="https://www.instagram.com/pr1vate.929/" target="_blank"
+                class="retro-link">@pr1vate.929</a>
+
+            FACEBOOK: <a href="https://www.facebook.com/elman.alishirov.alisirov/about/" target="_blank"
+                class="retro-link">Elman Alishirov</a>
+
+            -----------------------------------------
+            PRESS ANY KEY TO CONTINUE_
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2025 — Elman Əlişirov | Bütün hüquqlar qorunur
+    </footer>
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+
+
+        const letters = "0123456789";
+        const fontSize = 18;
+
+        let columns = Math.floor(canvas.width / fontSize);
+        let drops = [];
+
+        for (let i = 0; i < columns; i++) drops[i] = 1;
+
+        function draw() {
+            ctx.fillStyle = "rgba(0,0,0,0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#00ff88";
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 60);
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            columns = Math.floor(canvas.width / fontSize);
+            drops = [];
+            for (let i = 0; i < columns; i++) drops[i] = 1;
+        });
+
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('.home').on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $('#home').offset().top - 120
+            }, 700);
+        });
+        $('.project').on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $('#projectss').offset().top - 120
+            }, 700);
+        });
+        $('.conn').on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $('#contact').offset().top - 120
+            }, 700);
+        });
+    </script>
+</body>
+
+</html>

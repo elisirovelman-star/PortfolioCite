@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>Neon Kalkulyator</title>
+
+<style>
+body {
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:Arial;
+}
+.calc {
+    background:#0f0f0f;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 0 25px #00ff88aa;
+}
+#screen {
+    width:260px;
+    height:60px;
+    font-size:28px;
+    margin-bottom:15px;
+    background:#000;
+    border:1px solid #00ff88;
+    color:#00ff88;
+    text-align:right;
+    padding:10px;
+    border-radius:10px;
+}
+button {
+    width:60px;
+    height:60px;
+    margin:4px;
+    font-size:22px;
+    background:#000;
+    color:#00ff88;
+    border:1px solid #00ff88;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.20s;
+}
+button:disabled {
+    opacity:0.25;
+    cursor:not-allowed;
+}
+button:hover:enabled {
+    background:#00ff88;
+    color:#000;
+}
+</style>
+</head>
+<body>
+
+<div class="calc">
+    <input id="screen" disabled>
+
+    <div>
+        <button onclick="allClear()">C</button>
+        <button onclick="backspace()">←</button>
+        <button onclick="pressOp('%')" class="op">%</button>
+        <button onclick="pressOp('/')" class="op">÷</button>
+    </div>
+
+    <div>
+        <button onclick="pressNum('7')">7</button>
+        <button onclick="pressNum('8')">8</button>
+        <button onclick="pressNum('9')">9</button>
+        <button onclick="pressOp('*')" class="op">×</button>
+    </div>
+
+    <div>
+        <button onclick="pressNum('4')">4</button>
+        <button onclick="pressNum('5')">5</button>
+        <button onclick="pressNum('6')">6</button>
+        <button onclick="pressOp('-')" class="op">−</button>
+    </div>
+
+    <div>
+        <button onclick="pressNum('1')">1</button>
+        <button onclick="pressNum('2')">2</button>
+        <button onclick="pressNum('3')">3</button>
+        <button onclick="pressOp('+')" class="op">+</button>
+    </div>
+
+    <div>
+        <button onclick="pressNum('0')">0</button>
+        <button onclick="pressDot()" id="dot">.</button>
+        <button onclick="calculate()" id="equals">=</button>
+    </div>
+</div>
+
+<script>
+let screen = document.getElementById("screen");
+
+let operatorBtns = document.querySelectorAll(".op");
+let equalsBtn = document.getElementById("equals");
+let dotBtn = document.getElementById("dot");
+
+// İlk əvvəl hamısı blok
+disableOperators(true);
+equalsBtn.disabled = true;
+dotBtn.disabled = true;
+
+function pressNum(n){
+    screen.value += n;
+
+    // Rəqəm yazılan kimi hamısı açılır
+    disableOperators(false);
+    equalsBtn.disabled = false;
+    dotBtn.disabled = false;
+}
+
+function pressOp(op){
+    if(screen.value === "") return;
+    screen.value += op;
+
+    // operator yazılsa operatorlar yenidən blok olur
+    disableOperators(true);
+}
+
+function pressDot(){
+    if(screen.value === "") return;
+    screen.value += ".";
+    dotBtn.disabled = true; // bir dəfə yazılsın
+}
+
+function allClear(){
+    screen.value = "";
+    disableOperators(true);
+    equalsBtn.disabled = true;
+    dotBtn.disabled = true;
+}
+
+function backspace(){
+    screen.value = screen.value.slice(0,-1);
+
+    if(screen.value === ""){
+        disableOperators(true);
+        equalsBtn.disabled = true;
+        dotBtn.disabled = true;
+    }
+}
+
+function disableOperators(state){
+    operatorBtns.forEach(btn => btn.disabled = state);
+}
+
+function calculate(){
+    try{
+        let exp = screen.value.replace(/%/g,"/100");
+        screen.value = eval(exp);
+    }catch{
+        screen.value = "Error";
+    }
+}
+</script>
+
+</body>
+</html>
